@@ -12,5 +12,6 @@ public class WelcomeTest extends TestBase {
 		driver.get("https://automationexercise.com/");
 		Welcome wl = new Welcome(driver);
 		wl.verifyTitle();
+		wl.NewUser();
 	}
 }

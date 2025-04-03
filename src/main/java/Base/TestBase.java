@@ -24,6 +24,7 @@ public class TestBase {
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get("https://automationexercise.com/");
 	}
 
 	@AfterMethod(enabled = false)
@@ -31,6 +32,10 @@ public class TestBase {
 		if (driver != null) {
 			driver.quit();
 		}
+
 	}
 
+	public WebDriver getDriver() {
+		return driver;
+	}
 }

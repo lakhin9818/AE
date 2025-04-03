@@ -55,6 +55,10 @@ public class Welcome {
 	private WebElement SignUpZipcode;
 	@FindBy(xpath = "//h2//b[contains(text(),'Enter Account Information')]")
 	private WebElement UserDetailPage;
+	@FindBy(xpath = "//button[contains(text(),'Create Acc')]")
+	private WebElement CreateAccButton;
+	@FindBy(xpath = "//h2//b[contains(text(),'Account Created')]")
+	private WebElement AccoutCreatedMessage;
 
 	public Welcome(WebDriver driver) {
 		this.driver = driver;
@@ -78,21 +82,6 @@ public class Welcome {
 			NewUserEmail.sendKeys(prop.getProperty("NewUserEmail"));
 			NewUserSignUpButton.click();
 
-			wait.waitForElementToBeVisible(UserDetailPage, 20);
-			Assert.assertTrue(UserDetailPage.isDisplayed());
-			GenderMrSelect.click();
-			js.jsclick(NewUserPassword);
-			NewUserPassword.sendKeys(prop.getProperty("NewUserPassword"));
-			SignUpFirstName.sendKeys(prop.getProperty("SignupFirstName"));
-			SignUpLastName.sendKeys(prop.getProperty("SignupLastName"));
-			SignUpAdress.sendKeys(prop.getProperty("SignupAdress"));
-			js.jsScrollIntoView(signupCounty);
-			Select country = new Select(signupCounty);
-			country.selectByValue(prop.getProperty("SignupCountry"));
-			SignUpState.sendKeys(prop.getProperty("SignUpState"));
-			SignUpCity.sendKeys(prop.getProperty("SignUpCity"));
-			SignUpZipcode.sendKeys(prop.getProperty("SignUpZipcode"));
-			SignUpMobile.sendKeys(prop.getProperty("SignUpMobile"));
 		} else {
 			System.out.println("problem navigating to signup page");
 			if (VerifyEmailExist.isDisplayed())
@@ -104,5 +93,26 @@ public class Welcome {
 
 	public void LoginExistingUSer() {
 		System.out.println("existing user login");
+	}
+
+	public void createUser() {
+		wait.waitForElementToBeVisible(UserDetailPage, 20);
+		Assert.assertTrue(UserDetailPage.isDisplayed());
+		GenderMrSelect.click();
+		js.jsclick(NewUserPassword);
+		NewUserPassword.sendKeys(prop.getProperty("NewUserPassword"));
+		SignUpFirstName.sendKeys(prop.getProperty("SignupFirstName"));
+		SignUpLastName.sendKeys(prop.getProperty("SignupLastName"));
+		SignUpAdress.sendKeys(prop.getProperty("SignupAdress"));
+		js.jsScrollIntoView(signupCounty);
+		Select country = new Select(signupCounty);
+		country.selectByValue(prop.getProperty("SignupCountry"));
+		SignUpState.sendKeys(prop.getProperty("SignUpState"));
+		SignUpCity.sendKeys(prop.getProperty("SignUpCity"));
+		SignUpZipcode.sendKeys(prop.getProperty("SignUpZipcode"));
+		SignUpMobile.sendKeys(prop.getProperty("SignUpMobile"));
+		CreateAccButton.click();
+		String ACCreatedMSG = "ACCOUNT CREATED!";
+		Assert.assertEquals(AccoutCreatedMessage.getText(), ACCreatedMSG);
 	}
 }

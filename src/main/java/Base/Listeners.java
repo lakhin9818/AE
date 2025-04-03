@@ -82,7 +82,6 @@ public class Listeners implements ITestListener {
 ////		TakesScreenshot scrShot = ((TakesScreenshot) driver);
 //		// Call getScreenshotAs method to create image file
 ////		File SrcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-//		String SrcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
 //		File svd = new File(SrcFile);
 //		String screenshotPath = ".Screenshots" + testName + "_" + nameWithTime;
 //

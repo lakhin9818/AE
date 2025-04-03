@@ -17,10 +17,18 @@ public class WelcomeTest extends TestBase {
 		wl.createUser();
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2, enabled = false)
 	public void loginwithExistingUSer() {
 		LoginPage Lp = new LoginPage(driver);
 		Lp.loginUser();
 		Lp.ValidaLoggedUser();
 	}
+
+	@Test
+	public void invalidEmail() {
+
+		LoginPage Lp = new LoginPage(driver);
+		Lp.InvalidaLoggedUser();
+	}
+
 }

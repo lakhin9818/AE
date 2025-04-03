@@ -48,9 +48,20 @@ public class LoginPage {
 	}
 
 	public void ValidaLoggedUser() {
-		String Actual = loggedUserMEssage.getText() + "828";
+		String Actual = loggedUserMEssage.getText();
 		String Expected = "Logged in as" + " " + prop.getProperty("NewUserName");
 		Assert.assertEquals(Actual, Expected);
+	}
+
+	public void InvalidaLoggedUser() {
+		SignUpButton.click();
+		wait.waitForElementToBeVisible(LogintabMessage, 20);
+		assertTrue(LogintabMessage.isDisplayed());
+		UserEmail.sendKeys(prop.getProperty("invalidEmail"));
+		LoginPassword.sendKeys(prop.getProperty("NewUserPassword"));
+//		String Expected = "Logged in as" + " " + prop.getProperty("invalidEmail");
+
+		LoginButton.click();
 	}
 
 }
